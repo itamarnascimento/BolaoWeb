@@ -1,11 +1,16 @@
 pipeline {
     agent any
-
+    tools {nodejs "node"}
     stages {
-        stage('Hello') {
+        stage('Build') { 
             steps {
-                echo 'Hello World'
+                bat """
+                cd ${workspace}\\web
+                npm install"""
+                bat """
+                cd ${workspace}\\web
+                npm build"""
             }
-        }
+        }         
     }
 }
